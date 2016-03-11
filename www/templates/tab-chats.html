@@ -1,6 +1,7 @@
 <ion-view view-title="Chats">
   <ion-content>
     <ion-list>
+
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="user in userlist" ng-click="selectUser($index)"
                 ng-class="{active: activeUser == user}" type="item-text-wrap" href="#/chats/mxia">
         <img ng-src="img/ben.png">
