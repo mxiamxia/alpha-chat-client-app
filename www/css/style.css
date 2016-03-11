@@ -1,1 +1,388 @@
 /* Empty. Add your own CSS if you like */
+
+/*Custom Color*/
+.button.button-grey {
+  border-color: #585858;
+  background-color: #585858;
+  color: #fff; }
+.button.button-grey:hover {
+  color: #fff;
+  text-decoration: none; }
+.button.button-grey.active, .button.button-grey.activated {
+  border-color: #585858;
+  background-color: #686868;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+.button.button-grey.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #585858; }
+.button.button-grey.button-icon {
+  border-color: transparent;
+  background: none; }
+.button.button-grey.button-outline {
+  border-color: #585858;
+  background: transparent;
+  color: #585858; }
+.button.button-grey.button-outline.active, .button.button-grey.button-outline.activated {
+  background-color: #585858;
+  box-shadow: none;
+  color: #fff; }
+
+/*End*/
+
+.light{
+  background-color: #2E2E31;
+}
+
+.linegrey{
+
+  background-color: #2E2E31;
+  border:none;
+  border-bottom: 1px solid #8DB4B4;
+}
+
+.top180{
+  margin-top: 180px;
+}
+
+input.white{
+  color:#fff;
+  font-size:18px;
+}
+
+.right8{
+  right: 8px;
+}
+
+.light-grey{
+  background-color: #EDEBEE;
+  border:0px;
+}
+
+.line-light-grey{
+  background-color: #EDEBEE;
+  border:none;
+  border-bottom: 1px solid #8DB4B4;
+}
+
+.bottommsg{
+  position: fixed;
+  bottom:0px;
+  width: 100%;
+}
+
+.divsend{
+  background-color:#D5D5D9;
+  margin-left: 7px;
+}
+
+.iconsend{
+  font-size: 18px;
+}
+
+.width70{
+  width: 75%;
+  margin-right:0px;
+}
+
+.log{
+  text-align:center;
+  font-size: 13px;
+  color: #8A8A8A;
+  padding: 7px 14px 7px 14px;
+
+}
+
+.message{
+  padding: 0px 0px 0px 0px;
+  font-size: 12px;
+}
+
+.nopadtop{
+  padding-top: 0px;
+}
+
+.content{
+  bottom:68px;
+}
+
+.centerbadge{
+  display:table !important;
+}
+
+.app-icon {
+  background-color: #fff;
+  background: url('../img/crown.jpg') center;
+  background-size: cover;
+  border-radius: 50%;
+  height: 125px;
+  margin: 0 auto;
+  width: 125px;
+}
+.error-container {
+  margin: 5px 0;
+}
+
+.error-container:last-child {
+  margin: 5px 0 0;
+}
+
+.error {
+  padding: 10px 16px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #555;
+  vertical-align: middle;
+}
+
+.error i {
+  font-size: 24px;
+  color: #B83E2C;
+  vertical-align: middle;
+}
+
+.last-error-container > .error {
+  padding: 10px 16px 0;
+}
+
+.has-errors {
+  border-bottom: 3px solid #B83E2C;
+}
+
+.no-errors {
+  border-bottom: 3px solid green;
+}
+
+
+
+
+
+
+
+
+
+
+
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+/* allows the bar-footer to be elastic /*
+/* optionally set a max-height */
+/* maxlength on the textarea will prevent /*
+/* it from getting too large also */
+.bar-footer {
+  overflow: visible !important;
+}
+
+.bar-footer textarea {
+  resize: none;
+  height: 25px;
+  width: 90%;
+}
+
+.bar-footer input {
+  resize: none;
+  height: 25px;
+  width: 90%;
+  outline: 0;
+}
+
+/* fixes an ios bug bear */
+button.ion-android-send {
+  padding-top: 2px;
+}
+
+/* add this to keep your footer buttons down
+at the bottom as the textarea resizes */
+.footer-btn-wrap {
+  position: relative;
+  height: 100%;
+  width: 50px;
+  top: 7px;
+}
+
+.footer-btn {
+  position: absolute !important;
+  bottom: 0;
+}
+
+span.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+}
+
+span.profile-pic.left {
+  left: 10px;
+}
+
+span.profile-pic.right {
+  right: 10px;
+}
+
+.ion-email {
+  float: right;
+  font-size: 32px;
+  vertical-align: middle;
+}
+
+.message-detail {
+  white-space: nowrap;
+  font-size: 14px;
+  float: right;
+}
+
+.bar.item-input-inset .item-input-wrapper input {
+  width: 100% !important;
+}
+
+.message-wrapper {
+  position: relative;
+}
+
+.message-wrapper:last-child {
+  margin-bottom: 10px;
+}
+
+.chat-bubble {
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px 18px;
+  position: relative;
+  margin: 10px;
+  max-width: 80%;
+}
+
+.chat-bubble:before {
+  content: "\00a0";
+  display: block;
+  height: 16px;
+  width: 9px;
+  position: absolute;
+  bottom: -7.5px;
+}
+
+.chat-bubble.left {
+  background-color: #ffffff;
+  float: left;
+  margin-left: 55px;
+  box-shadow: 1px 1px 1px 1px #888888;
+}
+
+.chat-bubble.left:before {
+  background-color: #ffffff;
+  left: 10px;
+  -webkit-transform: rotate(70deg) skew(5deg);
+  box-shadow: 1px 1px 1px #888888;
+}
+
+.chat-bubble.right {
+  background-color: #158ffe;
+  color: #fff;
+  float: right;
+  margin-right: 55px;
+}
+
+.chat-bubble.right:before {
+  background-color: #158ffe;
+  right: 10px;
+  -webkit-transform: rotate(118deg) skew(-5deg);
+}
+
+.chat-bubble.right a.autolinker {
+  color: #fff;
+  font-weight: bold;
+}
+
+.user-messages-top-icon {
+  font-size: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+  right: 5px;
+}
+
+.msg-header-username {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+}
+
+input, textarea, .item-input, .item-input-wrapper {
+  background-color: #ffffff !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.cf {
+  clear: both !important;
+}
+
+a.autolinker {
+  color: #3b88c3;
+  text-decoration: none;
+}
+
+.typeahead-demo .custom-popup-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  background-color: #f9f9f9;
+}
+
+.typeahead-demo .custom-popup-wrapper > .message {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  color: #868686;
+}
+
+.typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+  position: static;
+  float: none;
+  display: block;
+  min-width: 160px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+div.dropup ul {
+  bottom:100% !important;
+  top:auto !important;
+}
+
+
+.dropdown-menu li {
+  display: block;
+  padding: 3px 20px;
+  /* clear: both; */
+  /* font-weight: 400; */
+  /* line-height: 1.42857143; */
+  color: #333;
+  white-space: nowrap;
+}
+
+.dropdown-menu li:hover {
+  background-color: #20ffc0;
+}
+
+
+ion-popover-view.fit {
+  height: auto !important;
+}
+
+ion-popover-view.fit ion-content {
+  position: relative !important;
+}

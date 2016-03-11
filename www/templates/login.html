@@ -1,0 +1,26 @@
+<ion-view view-title="" name="login-view" hide-nav-bar="true" ng-controller="LoginController as loginctrl">
+  <ion-content class="padding" >
+    <div class="hero no-header flat">
+      <div class="content">
+        <div class="app-icon"></div>
+        <h1>Aplpha Chat</h1>
+      </div>
+    </div>
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="Nick Name" ng-model="loginctrl.data.username" required>
+      </label>
+      <!--<label class="item item-input">-->
+        <!--<input type="password" placeholder="Password" ng-model="loginctrl.data.password">-->
+      <!--</label>-->
+    </div>
+    <div class="error-container" ng-if=loginctrl.loginerror>
+      <div class="error">
+        <i class="ion-information-circled"></i>
+        {{loginctrl.errdetail}}
+      </div>
+    </div>
+    <button class="button button-block button-calm" ng-click="loginctrl.loginApp()">Start Chat</button>
+  </ion-content>
+</ion-view>
