@@ -1,7 +1,7 @@
 app.controller('CoChatController', function ($scope, $stateParams, Poller, $ionicPopup, $sanitize, $timeout,$interval,$rootScope,
                                              $ionicSideMenuDelegate, $ionicScrollDelegate, Users, Engage, Send, $ionicActionSheet, SendTo,
                                              $q, $log, $ionicPopover, $state, Login, AutoSuggest, Record, $cordovaDeviceOrientation, $cordovaDeviceMotion,
-                                             cordovaProximity) {
+                                             publicsocket) {
 
   $scope.userlist = Users.all();
   $scope.loginname = $stateParams.username;
@@ -31,6 +31,21 @@ app.controller('CoChatController', function ($scope, $stateParams, Poller, $ioni
     $scope.activeUser = $scope.userlist[Users.getLastActiveIndex()];
   })
 
+  publicsocket.on('connect', function() {
+    publicsocket.on('login', function (data) {
+      $scope.connected = true
+      $scope.number_message= message_string(data.numUsers)
+    });
+
+    // Whenever the server emits 'new message', update the chat body
+    publicsocket.on('new message', function (data) {
+      if(data.message&&data.username)
+      {
+        addMessageToList(data.username,true,data.message)
+      }
+    });
+  })
+
   var scrollDown = function () {
     $ionicScrollDelegate.scrollBottom(true);
   }
@@ -54,100 +69,6 @@ app.controller('CoChatController', function ($scope, $stateParams, Poller, $ioni
   $scope.toggleUser = function () {
     $ionicSideMenuDelegate.toggleLeft();
   };
-
-  //var poll = function () {
-  //  Poller.poll($scope.loginname).then(function (resp) {
-  //    if (resp.data.status.code == '0000' && resp.data.body.result && Array.isArray(resp.data.body.result) && resp.data.body.result.length > 0) {
-  //      resp.data.body.result.forEach(function (message) {
-  //        chatProcess(message);
-  //      });
-  //    }
-  //    $timeout(poll, 1000);
-  //  });
-  //};
-  ////poll();
-  //
-  //var chatProcess = function (message) {
-  //
-  //  var type = message.messageType;
-  //  var from = message.from;
-  //  //var sender = message.sender;
-  //  //var senderType = message.senderType;
-  //  var senderName = message.senderName;
-  //  var senderText = message.text;
-  //  //var receiver = message.receiver;
-  //  if (senderName) {
-  //    agentids[senderName] = message.chatId;
-  //  }
-  //
-  //  if (type == 'Command' && message.command) {
-  //    switch (message.command) {
-  //      case "userRequestChat" :
-  //        var robotname = message.data;
-  //        if (message.senderType == 'User') {
-  //
-  //        } else {
-  //          if (!userExist(senderName)) {
-  //            var confirmPopup = $ionicPopup.confirm({
-  //              title: 'Engagement',
-  //              template: 'Do you want to start another engagement with ' + senderName + '?'
-  //            });
-  //            confirmPopup.then(function (res) {
-  //              if (res) {
-  //                $scope.userlist.push({username: senderName, messages: [], badge: 0});
-  //                if ($scope.userlist.length > 0) {
-  //                  $scope.activeUser = $scope.userlist[$scope.userlist.length - 1];
-  //                }
-  //                addMessageToList(senderName, robotname, true, senderText, true);
-  //                Engage.acceptEngage(senderName, agentids[senderName]);
-  //              } else {
-  //                console.log('Engagement end');
-  //                Engage.rejectEngage(senderName, agentids[senderName]);
-  //              }
-  //            });
-  //            $timeout(function () {
-  //              confirmPopup.close(); //close the popup after 30 seconds for some reason
-  //              Engage.rejectEngage(senderName, agentids[senderName]);
-  //            }, 30000);
-  //          } else {
-  //            addMessageToList(senderName, robotname, true, senderText, false)
-  //          }
-  //        }
-  //        break;
-  //      case "userAcceptChat" :
-  //        break;
-  //      case "userDeclineChat" :
-  //        break;
-  //    }
-  //  } else if (message.body.response) {
-  //    //get message txt from body response message field
-  //    var msgbody = message.body.response.message;
-  //    if (msgbody['@from']) {
-  //      var from = msgbody['@from'];
-  //    } else {
-  //      var from = message.props.robotid;
-  //    }
-  //
-  //    if (msgbody['@robotname']) {
-  //      var name = msgbody['@robotname'];
-  //    } else {
-  //      var name = message.props.robotname;
-  //    }
-  //    if (from && from.indexOf('ntelagent-conversation') > -1) {
-  //      addMessageToList(senderName, name, true, senderText, true);
-  //    } else {
-  //      addMessageToList(senderName, name, true, senderText, false);
-  //    }
-  //  } else {
-  //    //var xml =  message.message;
-  //    //var xml =  xml.replace(/(\r\n|\n|\r)/gm,"");
-  //    //var json = x2js.xml_str2json(xml);
-  //    if (message.body instanceof String || typeof message.body === "string") {
-  //      var text = message.body;
-  //      addMessageToList(senderName, senderName, true, text, false);
-  //    }
-  //  }
-  //}
 
   $scope.sendMessage = function () {
     if (!$scope.activeUser) {
@@ -566,6 +487,11 @@ app.controller('CoChatController', function ($scope, $stateParams, Poller, $ioni
 
   var stopWatchProximity = function(id) {
     $cordovaProximity.proximitysensorWatchStop(id || proximityID);
+  }
+
+  function message_string(number_of_users)
+  {
+    return number_of_users === 1 ? "there's 1 participant":"there are " + number_of_users + " participants"
   }
 
 })

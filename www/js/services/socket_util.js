@@ -5,3 +5,11 @@ app.factory('socket',function(socketFactory){
   });
   return mySocket;
 })
+
+.factory('publicsocket', function(socketFactory) {
+    var myIoSocket = io.connect('http://chat.socket.io');
+    var mySocket = socketFactory({
+      ioSocket: myIoSocket
+    });
+    return mySocket;
+  })

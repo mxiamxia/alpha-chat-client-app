@@ -1,22 +1,28 @@
-<ion-view view-title="Chats">
+<ion-view view-title="<div class='msg-header-username'>Chat List</div>">
   <ion-content>
     <ion-list>
-
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="user in userlist" ng-click="selectUser($index)"
-                ng-class="{active: activeUser == user}" type="item-text-wrap" href="#/chats/mxia">
+      <ion-item ng-show="publicSocketConnected" class="item-remove-animate item-avatar item-icon-right" ng-click="selectPubChat()"
+                ng-class="{active: publicSocketSelected}" type="item-text-wrap" ng-href="#/chats/{{nickname}}}">
         <img ng-src="img/ben.png">
-        <h2>{{user.username}}</h2>
-        <p>what can I do for you?</p>
-        <span ng-if="user.badge>0" class="badge badge-assertive">{{user.badge}}</span>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+        <h2>SokcetIO</h2>
+        <p>Tap me to get into public chat room</p>
+      </ion-item>
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-      <ion-item ng-show="chats.length==0">
-        <h2>No engagement conversation yet</h2>
-      </ion-item>
+      <!--<ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="user in userlist" ng-click="selectUser($index)"-->
+                <!--ng-class="{active: activeUser == user}" type="item-text-wrap" href="#/chats/mxia">-->
+        <!--<img ng-src="img/ben.png">-->
+        <!--<h2>{{user.username}}</h2>-->
+        <!--<p>what can I do for you?</p>-->
+        <!--<span ng-if="user.badge>0" class="badge badge-assertive">{{user.badge}}</span>-->
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+
+        <!--<ion-option-button class="button-assertive" ng-click="remove(chat)">-->
+          <!--Delete-->
+        <!--</ion-option-button>-->
+      <!--</ion-item>-->
+      <!--<ion-item ng-show="chats.length==0">-->
+        <!--<h2>No engagement conversation yet</h2>-->
+      <!--</ion-item>-->
     </ion-list>
   </ion-content>
 </ion-view>
