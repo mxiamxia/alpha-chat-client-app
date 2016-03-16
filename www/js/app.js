@@ -5,8 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.services', 'co.engage.services', 'app.loginController',
-                          'co.engage.filter', 'app.userServices', 'btford.socket-io'])
+var app = angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.loginController',
+                          'co.engage.filter', 'btford.socket-io'])
 
   .constant('HTTP_URL', 'http://192.168.254.155:8080/co-cyberlive/HttpService')
   .constant('SPEECH_RUL', "http://192.168.254.155:8089/co-voice-channel/uploadAudio.co")
@@ -49,7 +49,7 @@ var app = angular.module('app', ['ionic', 'ngCordova', 'app.controllers', 'app.s
   })
 
   .state('tab.chats', {
-      url: '/chats',
+      url: '/chats?username',
       views: {
         'tab-chats': {
           templateUrl: 'templates/tab-chats.html',

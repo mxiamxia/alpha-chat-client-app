@@ -1,8 +1,8 @@
 <ion-view view-title="<div class='msg-header-username'>Chat List</div>">
   <ion-content>
     <ion-list>
-      <ion-item ng-show="publicSocketConnected" class="item-remove-animate item-avatar item-icon-right" ng-click="selectPubChat()"
-                ng-class="{active: publicSocketSelected}" type="item-text-wrap" ng-href="#/chats/{{nickname}}}">
+      <ion-item ng-show="publicSocketConnected" class="item-remove-animate item-avatar item-icon-right" ng-click="selectFirstUser()"
+                ng-class="{active: publicSocketSelected}" type="item-text-wrap" ng-href="#/chats/{{nickname}}">
         <img ng-src="img/ben.png">
         <h2>SokcetIO</h2>
         <p>Tap me to get into public chat room</p>

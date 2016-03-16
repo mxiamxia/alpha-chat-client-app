@@ -1,5 +1,5 @@
 angular.module('app.loginController', [])
-  .controller('LoginController',function($scope, $state,$sanitize, Login, Users) {
+  .controller('LoginController',function($scope, $state,$sanitize) {
 	var self=this;
   self.data = {};
   self.loginerror = false;
