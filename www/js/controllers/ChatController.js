@@ -20,7 +20,6 @@ app.controller('CoChatController', function ($scope, $rootScope, $state, $stateP
 
   publicsocket.on('new message', function (data) {
     if (data.message && data.username) {
-      alert(data.message);
       addMessageToList(data.username, true, data.message)
     }
   });

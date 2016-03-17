@@ -6,7 +6,6 @@ app.factory('Users', function() {
 
     var updateMsg = function (msg, username) {
       //var users = all();
-      console.log(userList);
       userList.forEach(function (obj, index) {
         if (obj.username == username) {
           userList[index].messages.push(msg);

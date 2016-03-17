@@ -1,67 +1,71 @@
-  <ion-side-menus>
-    <ion-side-menu-content>
-      <ion-nav-bar class="bar-stable">
-        <ion-nav-buttons side="left">
-          <button class="button button-icon button-clear ion-ios-arrow-left" ng-click="goToBack()">
-            Back
-          </button>
-          <!--<div ng-if="totalbadge > 0" class="centerbadge badge badge-assertive" href="#/chats">{{totalbadge}}</div>-->
-        </ion-nav-buttons>
-      </ion-nav-bar>
-      <ion-view view-title="Alpha Chat">
-        <ion-nav-buttons side="left">
-          <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-        </ion-nav-buttons>
-        <ion-content has-bouncing="true" class="has-header has-footer">
-          <div ng-repeat="message in activeUser.messages" class="message-wrapper">
-            <div ng-if="loginname !== message.username" >
-              <span ng-show="message.style" class="profile-pic left" ng-style="{color:message.color}">{{message.username | limitTo:20}} : </span>
-              <div class="chat-bubble left">
-                <div class="message" html-bind-compile="{{message.content}}" autolinker>
-                </div>
-              </div>
-            </div>
+<ion-view view-title="Chat">
+    <ion-side-menus>
+        <ion-side-menu-content>
+            <ion-nav-bar class="bar-stable">
+                <ion-nav-buttons side="left">
+                    <button class="button button-icon button-clear ion-ios-arrow-left" ng-click="goToBack()">
+                    </button>
+                    <!--<div ng-if="totalbadge > 0" class="centerbadge badge badge-assertive" href="#/chats">{{totalbadge}}</div>-->
+                </ion-nav-buttons>
+            </ion-nav-bar>
+            <ion-view>
+                <ion-nav-buttons side="left">
+                    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+                </ion-nav-buttons>
+                <ion-content has-bouncing="true" class="has-header has-footer">
+                    <div ng-repeat="message in activeUser.messages" class="message-wrapper">
+                        <div ng-if="loginname !== message.username">
+                            <span ng-show="message.style" class="profile-pic left" ng-style="{color:message.color}">{{message.username | limitTo:20}} : </span>
 
-            <div ng-if="loginname === message.username" >
-              <span ng-show="message.style" class="profile-pic right" ng-style="{color:message.color}">:  {{ message.username | limitTo:20 }} </span>
-              <div class="chat-bubble right">
-                <div class="message" ng-bind-html="message.content | nl2br" autolinker>
-                </div>
-              </div>
-            </div>
-            <div class="cf"></div>
-          </div>
-        </ion-content>
-        <div class='container-fluid dropup'>
-          <ion-footer-bar class="bar-stable item-input-inset message-footer">
-            <label class="item-input-wrapper">
-              <textarea ng-enter="sendMessage()" ng-paste="sendMessage()" placeholder="Send a message" ng-trim="false" msd-elastic
+                            <div class="chat-bubble left">
+                                <div class="message" html-bind-compile="{{message.content}}" autolinker>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="loginname === message.username">
+                            <span ng-show="message.style" class="profile-pic right" ng-style="{color:message.color}">:  {{ message.username | limitTo:20 }} </span>
+
+                            <div class="chat-bubble right">
+                                <div class="message" ng-bind-html="message.content | nl2br" autolinker>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cf"></div>
+                    </div>
+                </ion-content>
+                <div class='container-fluid dropup'>
+                    <ion-footer-bar class="bar-stable item-input-inset message-footer">
+                        <label class="item-input-wrapper">
+              <textarea ng-enter="sendMessage()" ng-paste="sendMessage()" placeholder="Send a message" ng-trim="false"
+                        msd-elastic
                         ng-model="data.search"></textarea>
-            </label>
-            <!--<div class="footer-btn-wrap">-->
-              <!--<button class="button button-icon button-clear icon footer-btn" ng-class="{'ion-mic-a':!recording, 'ion-loading-a':recording}" ng-click="recordAudio()">-->
-              <!--</button>-->
-            <!--</div>-->
-            <div class="footer-btn-wrap">
-              <button class="button button-icon button-clear icon ion-paper-airplane footer-btn" ng-click="sendMessage()"
-                      ng-disabled="!data.search || data.search === ''">
-              </button>
-            </div>
-          </ion-footer-bar>
-        </div>
-      </ion-view>
-    </ion-side-menu-content>
-    <ion-side-menu side="right">
-      <ion-header-bar class="bar-positive">
-        <h1 class="title">Most Recent Replies</h1>
-      </ion-header-bar>
-      <ion-content>
-        <ion-list>
-          <!--<ion-item menu-close ng-repeat="reply in popularReplies" ng-click="sendReply($index)">-->
-            <!--{{reply}}-->
-          <!--</ion-item>-->
-        </ion-list>
-      </ion-content>
-    </ion-side-menu>
-  </ion-side-menus>
-
+                        </label>
+                        <!--<div class="footer-btn-wrap">-->
+                        <!--<button class="button button-icon button-clear icon footer-btn" ng-class="{'ion-mic-a':!recording, 'ion-loading-a':recording}" ng-click="recordAudio()">-->
+                        <!--</button>-->
+                        <!--</div>-->
+                        <div class="footer-btn-wrap">
+                            <button class="button button-icon button-clear icon ion-paper-airplane footer-btn"
+                                    ng-click="sendMessage()"
+                                    ng-disabled="!data.search || data.search === ''">
+                            </button>
+                        </div>
+                    </ion-footer-bar>
+                </div>
+            </ion-view>
+        </ion-side-menu-content>
+        <ion-side-menu side="right">
+            <ion-header-bar class="bar-positive">
+                <h1 class="title">Most Recent Replies</h1>
+            </ion-header-bar>
+            <ion-content>
+                <ion-list>
+                    <!--<ion-item menu-close ng-repeat="reply in popularReplies" ng-click="sendReply($index)">-->
+                    <!--{{reply}}-->
+                    <!--</ion-item>-->
+                </ion-list>
+            </ion-content>
+        </ion-side-menu>
+    </ion-side-menus>
+</ion-view>
