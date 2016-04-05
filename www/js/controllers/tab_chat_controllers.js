@@ -1,7 +1,7 @@
 angular.module('app.controllers', [])
 
   .controller('ChatsCtrl', function ($rootScope, $scope, Users,
-                                     socket, publicsocket, $stateParams) {
+                                     publicsocket, $stateParams) {
 
     $scope.publicSocketConnected = false;
     $scope.nickname = $stateParams.username;

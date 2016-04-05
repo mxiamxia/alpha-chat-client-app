@@ -1,4 +1,4 @@
-Then, to run it, cd into `myApp` and run:
+hen, to run it, cd into `myApp` and run:
 
 ```bash
 $ ionic platform add ios
